@@ -1,8 +1,11 @@
 const devMode = ((process.env.NODE_ENV).trim() === "development");
 
 const path = require("path");
+const glob = require("glob-all");
 
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const PurifyCSSPlugin = require("purifycss-webpack");
+
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const CleanWebpackPlugin = require("clean-webpack-plugin");
 
@@ -33,12 +36,7 @@ module.exports = {
                 test: /\.css$/,
                 use: [
                     MiniCssExtractPlugin.loader,
-                    {
-                        loader: "css-loader",
-                        options: {
-                            minimize: !devMode
-                        }
-                    },
+                    "css-loader",
                     "postcss-loader"
                 ]
             },
@@ -106,7 +104,17 @@ module.exports = {
             chunks: ["index"]
         }),
         new CleanWebpackPlugin(["dist"])
-    ],
+    ].concat(
+        devMode ? [] : [
+            new PurifyCSSPlugin({
+                paths: glob.sync([
+                    path.join(__dirname, "src/*.html"),
+                    path.join(__dirname, "src/js/*.js")
+                ]),
+                minimize: true
+            })
+        ]
+    ),
     devServer: {
         open: true,
         overlay: true,
