@@ -1,6 +1,6 @@
 {
   "name": "Html5-template",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Basic HTML5 starter template with webpack",
   "main": "app.js",
   "scripts": {
@@ -10,6 +10,10 @@
   },
   "author": "Ayan Dey",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/whimsicaldreamer/Html5-template.git"
+  },
   "devDependencies": {
     "babel-core": "^6.26.3",
     "babel-loader": "^7.1.4",
