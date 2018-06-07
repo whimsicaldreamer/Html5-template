@@ -5,8 +5,9 @@
   * Using this particular setup will help achieve mobile-first approach
 **/
 
+@import "~normalize.css";
 
-/** AUTHOR'S OWN CSS STYLES **/
+/** AUTHOR'S OWN CSS STYLES BELOW**/
 /** Extra small devices (portrait phones, less than 576px) **/
 
 

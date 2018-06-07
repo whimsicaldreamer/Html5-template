@@ -16,7 +16,18 @@ module.exports = {
     output: {
         path: path.resolve(__dirname + "/dist"),
         filename: devMode ? "js/[name].js" : "js/[name]-[chunkhash].min.js",
-        chunkFilename: devMode ? "js/[id].js" : "js/[id]-[chunkhash].min.js"
+        chunkFilename: devMode ? "js/[id].js" : "js/[name]-[chunkhash].min.js"
+    },
+    optimization: {
+        splitChunks: {
+            cacheGroups: {
+                commons: {
+                    name: "vendor",
+                    chunks: "initial",
+                    minChunks: 2
+                }
+            }
+        }
     },
     module: {
         rules: [
@@ -96,12 +107,12 @@ module.exports = {
     plugins: [
         new MiniCssExtractPlugin({
             filename: devMode ? "css/[name].css" : "css/[name]-[contenthash].min.css",
-            chunkFilename: devMode ? "css/[id].css" : "css/[id]-[contenthash].min.css"
+            chunkFilename: devMode ? "css/[id].css" : "css/[name]-[contenthash].min.css"
         }),
         new HtmlWebpackPlugin({
             filename: "index.html",
             template: "src/index.html",
-            chunks: ["index"]
+            chunks: [ "vendor", "index"]
         }),
         new CleanWebpackPlugin(["dist"])
     ].concat(
