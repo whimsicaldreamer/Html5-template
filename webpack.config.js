@@ -155,7 +155,7 @@ module.exports = {
         ]
     ),
     devServer: {
-        open: true,
+        //open: true, // Uncomment/Comment `open` if not using/using Browser-sync-plugin
         overlay: true,
         contentBase: "src",
         // OPTIONAL: Remove following if you are not using any backend
