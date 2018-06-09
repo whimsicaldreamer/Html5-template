@@ -58,6 +58,15 @@ To do so:
    }
    ```
  
+### Using backend files  
+For using backend files like **PHP** (typically its my use case), Browser-sync is in place to pick up changes and reload the browser.
+If any other backend files are being used, try changing the `match` option of Browser-Sync plugin in `webpack.config.js` and hopefully 
+everything should go well.  
+
+> **Remember to run you local backend server first and change proxies/ port/ host accordingly.**  
+
+> _Its better to remove Browser-sync-plugin and dev-server proxy if you are working with a static site._ 
+ 
 ### Running your project  
 
 **Development:** **`npm run start`**  

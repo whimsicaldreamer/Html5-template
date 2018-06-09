@@ -9,6 +9,8 @@ const PurifyCSSPlugin = require("purifycss-webpack");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const CleanWebpackPlugin = require("clean-webpack-plugin");
 
+const BrowserSyncPlugin = require('browser-sync-webpack-plugin');
+
 const entryPoints = require("./app");
 
 module.exports = {
@@ -116,7 +118,33 @@ module.exports = {
         }),
         new CleanWebpackPlugin(["dist"])
     ].concat(
-        devMode ? [] : [
+        devMode ? [
+            /**
+             * Remove this plugin if you are not dealing with backend files
+             * If using any backend files other than PHP, change the `match` option to match
+             * the file type you want to watch for.
+             */
+            new BrowserSyncPlugin(
+                {
+                    proxy: "http://localhost:8080",
+                    files: [
+                        {
+                            match: [
+                                "**/*.php"
+                            ],
+                            fn: function(event, file) {
+                                if (event === "change") {
+                                    const bs = require("browser-sync").get("bs-webpack-plugin");
+                                    bs.reload();
+                                }
+                            }
+                        }
+                    ]
+                },
+                {
+                    reload: false
+                })
+        ] : [
             new PurifyCSSPlugin({
                 paths: glob.sync([
                     path.join(__dirname, "src/*.html"),
@@ -129,6 +157,18 @@ module.exports = {
     devServer: {
         open: true,
         overlay: true,
-        contentBase: "src"
+        contentBase: "src",
+        // OPTIONAL: Remove following if you are not using any backend
+        proxy: {
+            "/": {
+                target: {
+                    host: "project-url", // Change it to virtual host URL
+                    protocol: "http",
+                    port: 80 // Port No of your virtual host. Check `httpd-vhosts.conf` if you are not sure
+                },
+                changeOrigin: true,
+                secure: false
+            }
+        }
     }
 };
