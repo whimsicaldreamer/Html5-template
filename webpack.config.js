@@ -9,6 +9,7 @@ const PurifyCSSPlugin = require("purifycss-webpack");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const CleanWebpackPlugin = require("clean-webpack-plugin");
 
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 const BrowserSyncPlugin = require('browser-sync-webpack-plugin');
 
 const entryPoints = require("./app");
@@ -151,7 +152,13 @@ module.exports = {
                     path.join(__dirname, "src/js/*.js")
                 ]),
                 minimize: true
-            })
+            }),
+            new CopyWebpackPlugin([
+                {
+                    from: "src/",
+                    ignore:["assets/**/*", "css/**/*", "js/**/*", "*.html", ".gitkeep"]
+                }
+            ])
         ]
     ),
     devServer: {

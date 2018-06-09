@@ -1,6 +1,6 @@
 {
   "name": "Html5-template",
-  "version": "0.3.1",
+  "version": "0.4.0",
   "description": "Basic HTML5 starter template with webpack",
   "main": "app.js",
   "scripts": {
@@ -22,6 +22,7 @@
     "browser-sync": "^2.24.4",
     "browser-sync-webpack-plugin": "^2.2.2",
     "clean-webpack-plugin": "^0.1.19",
+    "copy-webpack-plugin": "^4.5.1",
     "css-loader": "^0.28.11",
     "file-loader": "^1.1.11",
     "glob-all": "^3.1.0",
