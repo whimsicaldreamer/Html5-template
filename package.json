@@ -1,6 +1,6 @@
 {
   "name": "Html5-template",
-  "version": "0.4.0",
+  "version": "1.0.0",
   "description": "Basic HTML5 starter template with webpack",
   "main": "app.js",
   "scripts": {
