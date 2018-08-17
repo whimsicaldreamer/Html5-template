@@ -2,6 +2,7 @@ const devMode = ((process.env.NODE_ENV).trim() === "development");
 
 const path = require("path");
 const glob = require("glob-all");
+const webpack = require("webpack");
 
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const PurifyCSSPlugin = require("purifycss-webpack");
@@ -122,6 +123,11 @@ module.exports = {
             filename: "index.html",
             template: "src/index.html",
             chunks: [ "vendor", "index"]
+        }),
+        new webpack.ProvidePlugin({
+            $: "jquery",
+            jQuery: "jquery",
+            fontawesome: "@fortawesome/fontawesome"
         }),
         new CleanWebpackPlugin(["dist"])
     ].concat(
