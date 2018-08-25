@@ -1,4 +1,4 @@
-const devMode = ((process.env.NODE_ENV).trim() === "development");
+const devMode = (process.env.NODE_ENV === "development");
 
 const path = require("path");
 const glob = require("glob-all");
