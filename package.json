@@ -1,12 +1,12 @@
 {
-  "name": "Html5-template",
-  "version": "1.1.0",
+  "name": "html5-template",
+  "version": "1.2.0",
   "description": "Basic HTML5 starter template with webpack",
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "set NODE_ENV=development && webpack-dev-server --mode development",
-    "build": "set NODE_ENV=production && webpack --mode production",
+    "start": "cross-env NODE_ENV=development webpack-dev-server --mode development",
+    "build": "cross-env NODE_ENV=production webpack --mode production",
     "build:modernizr": "modernizr -c modernizr-config.json -d ./src/js/"
   },
   "author": "Ayan Dey",
@@ -23,6 +23,7 @@
     "browser-sync-webpack-plugin": "^2.2.2",
     "clean-webpack-plugin": "^0.1.19",
     "copy-webpack-plugin": "^4.5.1",
+    "cross-env": "^5.2.0",
     "css-loader": "^0.28.11",
     "eslint": "^4.19.1",
     "eslint-loader": "^2.0.0",
