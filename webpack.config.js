@@ -126,8 +126,7 @@ module.exports = {
         }),
         new webpack.ProvidePlugin({
             $: "jquery",
-            jQuery: "jquery",
-            fontawesome: "@fortawesome/fontawesome"
+            jQuery: "jquery"
         }),
         new CleanWebpackPlugin(["dist"])
     ].concat(
