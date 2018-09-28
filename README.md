@@ -1,5 +1,11 @@
 # HTML5-Template
-###### A simple HTML5 boilerplate with the power of Webpack-4
+###### A simple HTML5 boilerplate with the power of Webpack 4
+
+[![GitHub release](https://img.shields.io/github/release/qubyte/rubidium.svg?style=popout-square)](https://github.com/whimsicaldreamer/Html5-template)
+[![GitHub stars](https://img.shields.io/github/stars/whimsicaldreamer/Html5-template.svg?style=popout-square)](https://github.com/whimsicaldreamer/Html5-template/stargazers)
+[![David](https://img.shields.io/david/expressjs/express.svg?style=popout-square)](https://github.com/whimsicaldreamer/Html5-template)
+[![David](https://img.shields.io/david/dev/expressjs/express.svg?style=popout-square)](https://github.com/whimsicaldreamer/Html5-template)
+[![GitHub license](https://img.shields.io/github/license/whimsicaldreamer/Html5-template.svg?style=popout-square)](https://github.com/whimsicaldreamer/Html5-template/blob/master/LICENSE.md)
 
 _This boilerplate is customized to contain the parts which I generally use to develop my websites. Some parts are taken from popular open source projects._
 
