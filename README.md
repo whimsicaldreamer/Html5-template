@@ -63,7 +63,30 @@ To do so:
    }
    ```
  
+### Using Font Awesome
+
+I have used **fontawesome-svg-core** but anyone could use the **fontawesome-free** package but it might need some changes (I haven't checked).  
+ > One of the most common use cases where you would reach for the core package instead of using fontawesome-free or fontawesome-pro is to create a subset of icons to reduce your final bundled file size.  
+ 
+ #### How to use?  
+ 
+ - Add the following in your js file. (Ex: We are going to use _shipping-fast_ icon)
+   ```js
+   import { library, dom } from "@fortawesome/fontawesome-svg-core";
+   import { faShippingFast } from "@fortawesome/free-solid-svg-icons";
+   library.add(faShippingFast);
+   dom.watch();
+   ```
+   
+ - And then use the imported icon in your HTML file as following:  
+   ```html
+   <i class="fas fa-shipping-fast"></i>
+   ```
+   
+**_The rendered icon will be an svg_**. :tada::tada:
+
 ### Using backend files  
+
 For using backend files like **PHP** (typically its my use case), Browser-sync is in place to pick up changes and reload the browser.
 If any other backend files are being used, try changing the `match` option of Browser-Sync plugin in `webpack.config.js` and hopefully 
 everything should go well.  
