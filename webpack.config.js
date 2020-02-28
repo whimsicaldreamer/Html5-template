@@ -3,13 +3,10 @@ const devMode = (process.env.NODE_ENV === "development");
 const path = require("path");
 const glob = require("glob-all");
 const webpack = require("webpack");
-
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const PurifyCSSPlugin = require("purifycss-webpack");
-
 const HtmlWebpackPlugin = require("html-webpack-plugin");
-const CleanWebpackPlugin = require("clean-webpack-plugin");
-
+const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const BrowserSyncPlugin = require('browser-sync-webpack-plugin');
 
@@ -18,7 +15,7 @@ const entryPoints = require("./app");
 module.exports = {
     entry: entryPoints,
     output: {
-        path: path.resolve(__dirname + "/dist"),
+        path: path.resolve(process.cwd(), "dist"),
         filename: devMode ? "js/[name].js" : "js/[name]-[chunkhash].min.js",
         chunkFilename: devMode ? "js/[id].js" : "js/[name]-[chunkhash].min.js"
     },
@@ -42,13 +39,15 @@ module.exports = {
                 loader: "eslint-loader",
             },
             {
-                test: /\.js$/,
-                exclude: /node_modules/,
+                test: /\.m?js$/,
+                exclude: /(node_modules|bower_components)/,
                 use: [
                     {
                         loader: "babel-loader",
                         options: {
-                            presets: ["es2015"]
+                            presets: ["@babel/preset-env"],
+                            plugins: ["@babel/plugin-transform-runtime"],
+                            cacheDirectory: true,
                         }
                     }
                 ]
@@ -56,9 +55,9 @@ module.exports = {
             {
                 test: /\.css$/,
                 use: [
-                    MiniCssExtractPlugin.loader,
-                    "css-loader",
-                    "postcss-loader"
+                    { loader: MiniCssExtractPlugin.loader, options: { hmr: devMode, reloadAll: true, }},
+                    { loader: "css-loader", options: { modules: true, importLoaders: 1 }},
+                    "postcss-loader",
                 ]
             },
             {
@@ -128,7 +127,7 @@ module.exports = {
             $: "jquery",
             jQuery: "jquery"
         }),
-        new CleanWebpackPlugin(["dist"])
+        new CleanWebpackPlugin({ dry: true }),
     ].concat(
         devMode ? [
             /**
