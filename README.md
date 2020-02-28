@@ -12,7 +12,7 @@ _This boilerplate is customized to contain the parts which I generally use to de
 
 - **Clone this repository.**
 - **Browse into the project directory**
-- **Do** `npm install`
+- **Do** `yarn install`
 - **Then you are good to go!!** :tada:
 
 > **NOTE:** For every new build existing `dist` directory will be deleted.  
@@ -45,7 +45,7 @@ Then,
 Modernizr is _**turned off**_ by default but if you need to use it, you first need to generate the custom build.  
 To do so:  
  - Modify the `modernizr-config.json` file to add whatever tests/ options you need. For full set of tests/ options refer **[here](https://github.com/Modernizr/Modernizr/blob/master/lib/config-all.json)**.
- - Run **`npm run build:modernizr`** to generate the custom build into your `src/js/` directory.
+ - Run **`yarn build:modernizr`** to generate the custom build into your `src/js/` directory.
  - Add it to your `app.js` file. **Remember,** to put it on top of everything (_see below example_), or else you might have some errors.  
    ```js
     index: [
@@ -97,13 +97,13 @@ everything should go well.
  
 ### Running your project  
 
-**Development:** **`npm run start`**  
+**Development:** **`yarn start`**  
 It will start the dev server at `localhost:8080`.  
 
-**Production:** **`npm run build`**  
+**Production:** **`yarn build`**  
 It will build the whole project into `dist` directory.  
 
-**Build modernizr.js:** **`npm run build:modernizr`**  
+**Build modernizr.js:** **`yarn build:modernizr`**  
 It will build the custom modernizr.js into `src/js/` directory. 
 
 ## Contributing  
