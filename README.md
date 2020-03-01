@@ -21,23 +21,17 @@ _This boilerplate is customized to contain the parts which I generally use to de
 
 ### Adding new pages  
 
-To add new page (ex: **page2**) in your project, create **html**, **css**, **js** files inside `src` directory and under respective directories.  
+To add new page (ex: **page2.html**) in your project, create **html**, **css**, **js** files inside `src` directory and under respective directories.  
 Then,  
 - add an entry point inside `app.js` file like following:
   ````js
+  // page2 refers to the name of the html file
   page2: [
-    "./src/js/page2.js",
-    "./src/css/page2.css"
+    "./src/js/<your-js-file>.js",
+    "./src/css/<your-stylesheet>.css"
   ]
   ````
-- Modify `webpack.config.js` and add the following just below the **index.html**:  
-  ````js
-  new HtmlWebpackPlugin({
-     filename: "page2.html",
-     template: "src/page2.html",
-     chunks: [ "vendor", "page2"]
-  })
-  ````
+- Restart webpack
 - :tada: **_And you are all done!!_** :tada:
   
 ### Using Modernizr  

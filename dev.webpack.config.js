@@ -4,6 +4,16 @@ const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
 const entryPoints = require("./app");
 
+const getAllPages = () => {
+    return Object.entries(entryPoints).map(([page]) => {
+        return new HtmlWebpackPlugin({
+            filename: `${page}.html`,
+            template: `src/${page}.html`,
+            chunks: ["vendor", page],
+        });
+    });
+};
+
 module.exports = {
     mode: "development",
     entry: entryPoints,
@@ -50,11 +60,7 @@ module.exports = {
             filename: "css/[name].css",
             chunkFilename: "css/[id].css",
         }),
-        new HtmlWebpackPlugin({
-            filename: "index.html",
-            template: "src/index.html",
-            chunks: [ "vendor", "index"],
-        }),
+        ...getAllPages(),
         new webpack.ProvidePlugin({
             $: "jquery",
             jQuery: "jquery",
