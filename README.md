@@ -31,7 +31,6 @@ Then,
     "./src/css/<your-stylesheet>.css"
   ]
   ````
-- Restart webpack
 - :tada: **_And you are all done!!_** :tada:
   
 ### Using Modernizr  
