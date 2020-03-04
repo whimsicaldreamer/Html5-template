@@ -67,7 +67,6 @@ module.exports = {
         }),
     ],
     devServer: {
-        open: true,
         contentBase: "src",
         compress: true,
         stats: "minimal",
