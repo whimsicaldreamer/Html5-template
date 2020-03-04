@@ -43,10 +43,16 @@ module.exports = {
                 ]
             },
             {
-                test: /\.css$/i,
+                test: /\.(sa|sc|c)ss$/,
                 use: [
                     MiniCssExtractPlugin.loader,
-                    "css-loader",
+                    {
+                        loader: "css-loader",
+                        options: {
+                            importLoaders: 1,
+                        }
+                    },
+                    "sass-loader",
                 ]
             },
             {
@@ -70,5 +76,7 @@ module.exports = {
         contentBase: "src",
         compress: true,
         stats: "minimal",
-    }
+        port: 8080,
+    },
+    devtool: "eval-source-map",
 };
