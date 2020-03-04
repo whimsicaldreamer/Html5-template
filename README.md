@@ -81,7 +81,7 @@ I have used **fontawesome-svg-core** but anyone could use the **fontawesome-free
 ### Using backend files  
 
 For using backend files like **PHP** (typically its my use case), Browser-sync is in place to pick up changes and reload the browser.
-If any other backend files are being used, try changing the `match` option of Browser-Sync plugin in `webpack.config.js` and hopefully 
+If any other backend files are being used, try changing the `match` option of Browser-Sync plugin in `webpack.prod.config.js` and hopefully 
 everything should go well.  
 
 > **Remember to run you local backend server first and change proxies/ port/ host accordingly.**  
