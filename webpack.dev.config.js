@@ -3,6 +3,7 @@ const HtmlWebpackPlugin = require("html-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
 const entryPoints = require("./app");
+const proxies = require("./proxy-config");
 
 const getAllPages = () => {
     return Object.entries(entryPoints).map(([page]) => {
@@ -25,7 +26,7 @@ module.exports = {
         rules: [
             {
                 enforce: "pre",
-                test: /\.m?js$/,
+                test: /\.m?js$/i,
                 exclude: /node_modules/,
                 loader: "eslint-loader",
                 options: {
@@ -33,7 +34,7 @@ module.exports = {
                 }
             },
             {
-                test: /\.m?js$/,
+                test: /\.m?js$/i,
                 exclude: /node_modules/,
                 use: [
                     {
@@ -47,16 +48,22 @@ module.exports = {
                 ]
             },
             {
-                test: /\.(sa|sc|c)ss$/,
+                test: /\.(sa|sc|c)ss$/i,
                 use: [
                     MiniCssExtractPlugin.loader,
                     {
                         loader: "css-loader",
                         options: {
                             importLoaders: 1,
+                            sourceMap: true,
                         }
                     },
-                    "sass-loader",
+                    {
+                        loader: "sass-loader",
+                        options: {
+                            sourceMap: true,
+                        }
+                    },
                 ]
             },
             {
@@ -78,7 +85,7 @@ module.exports = {
                 ]
             },
             {
-                test: /\.(woff(2)?|ttf|eot)(\?v=\d+\.\d+\.\d+)?$/,
+                test: /\.(woff(2)?|ttf|eot|otf)(\?v=\d+\.\d+\.\d+)?$/i,
                 use: [
                     {
                         loader: "file-loader",
@@ -108,6 +115,7 @@ module.exports = {
         compress: true,
         stats: "minimal",
         port: 8080,
+        proxy: proxies,
     },
     devtool: "eval-source-map",
 };
