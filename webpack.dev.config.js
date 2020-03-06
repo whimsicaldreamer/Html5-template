@@ -17,6 +17,10 @@ const getAllPages = () => {
 module.exports = {
     mode: "development",
     entry: entryPoints,
+    output: {
+        filename: "js/[name].js",
+        chunkFilename: "js/[name].js",
+    },
     module: {
         rules: [
             {
@@ -56,17 +60,19 @@ module.exports = {
                 ]
             },
             {
-                test: /\.html$/,
+                test: /\.html$/i,
                 loader: "html-loader",
             },
             {
-                test: /\.(gif|jpe?g|png)$/,
+                test: /\.(gif|jpe?g|png|svg)$/i,
                 use: [
                     {
                         loader: "file-loader",
                         options: {
+                            name: "[name].[ext]",
                             outputPath: "assets/images/",
-                            publicPath: "/assets/images/"
+                            publicPath: "/assets/images/",
+                            esModule: false,
                         }
                     },
                 ]
