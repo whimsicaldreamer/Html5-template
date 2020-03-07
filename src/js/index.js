@@ -1,1 +1,1 @@
-console.log("This is the index page");
+console.log("Welcome to HTML5 Template!");

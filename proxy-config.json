@@ -1,0 +1,11 @@
+{
+    "/": {
+        "target": {
+            "host": "your-virtual-host-name",
+            "protocol": "http",
+            "port": 80
+        },
+        "changeOrigin": true,
+        "secure": false
+    }
+}

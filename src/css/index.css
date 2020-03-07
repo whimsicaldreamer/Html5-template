@@ -7,6 +7,30 @@
 
 @import "~normalize.css";
 
+html, body {
+    height: 100%;
+}
+
+body {
+    background-color: #F3D24F;
+    font-family: "Arial", "sans-serif";
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.upgradeInfo {
+    font-weight: bold;
+    color: #f01f1f;
+}
+
+.welcomeText {
+    text-align: center;
+    font-size: 2em;
+    color: #302a0f;
+}
+
 /** AUTHOR'S OWN CSS STYLES BELOW**/
 /** Extra small devices (portrait phones, less than 576px) **/
 
