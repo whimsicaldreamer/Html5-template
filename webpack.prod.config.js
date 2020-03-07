@@ -1,6 +1,7 @@
 const path = require("path");
 const merge = require("webpack-merge");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const CopyWebpackPlugin = require("copy-webpack-plugin");
 const common = require("./webpack.common.config");
 
 module.exports = merge.smart(common, {
@@ -63,6 +64,18 @@ module.exports = merge.smart(common, {
             filename: "css/[name]-[contenthash].min.css",
             chunkFilename: "css/[name]-[contenthash].min.css",
         }),
+        new CopyWebpackPlugin([
+            {
+                from: "src/",
+                ignore: [
+                    "assets/fonts/*",
+                    "assets/images/*",
+                    "css/**/*",
+                    "js/**/*",
+                    "*.html",
+                ],
+            }
+        ]),
     ],
     devtool: "source-map",
 });
